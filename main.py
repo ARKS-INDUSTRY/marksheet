@@ -19,6 +19,10 @@ def transition():
    entry_math.destroy()
    entry_phy.destroy()
    button.destroy()
+def save(data, stu_name):
+    file = open(f"DATA/{stu_name} data", "w")
+    file.write(str(data))
+    file.close()
 def ShowResult():
    Name = entry_name.get()
    name = str(Name)
@@ -74,6 +78,14 @@ def ShowResult():
    total_mark = Label(root, text=totl)
    total_mark.config(font=("Helvetica ", 15))
    total_mark.pack()
+   marks = []
+   marks.append(eng_mark)
+   marks.append(phy_mark)
+   marks.append(chem_mark)
+   marks.append(math_mark)
+   marks.append(cs_mark)
+   SAVE_BUTTON = Button(root, width=30, text="Save", bg="#1EE8AB", command=save(marks, name))
+   SAVE_BUTTON.pack()
 head = Label(root,text="Student marksheet")
 head.config(font=("aharoni", 30))
 head.pack()
